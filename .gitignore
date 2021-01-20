@@ -1,3 +1,4 @@
 vars.py
 **/__pycache__
 *.pickle
+data_collection

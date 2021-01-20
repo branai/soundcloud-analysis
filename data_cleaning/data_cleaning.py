@@ -1,24 +1,27 @@
 import sys
-sys.path.append("../")
+sys.path.append('../')
 
 from sql_logic import Database_Instance
 import pickle
 import vars
 
+# Create db instances for all db files
 dbs = [Database_Instance('../db_files/' + f) for f in vars.db_filenames]
+
+# Holds ids in each db
 id_sets = []
 
-all_set = set()
-
+# Add ids to id_sets
 for i in range(len(dbs)):
     curr_set = set()
     for a in dbs[i].query('''SELECT id FROM surface_artist_data'''):
         curr_set.add(a[0])
-        all_set.add(a[0])
     id_sets.append(curr_set)
 
+# Find the common ids between all 6 dbs
 common_ids = set.intersection(*id_sets)
 
+# Put relavent info into dict
 profile_data = {}
 
 for i in range(len(dbs)):
@@ -37,12 +40,14 @@ for i in range(len(dbs)):
 
 ids_to_remove = set()
 
+# If latest pull shows less than 1000 followers remove it from id set
 for id in common_ids:
-    if(profile_data[id]['followers_count'][len(dbs) - 1] < 1000 or profile_data[id]['verified'][len(dbs) - 1] == 1):
+    if(profile_data[id]['followers_count'][len(dbs) - 1] < 1000):
         ids_to_remove.add(id)
 
 common_ids = common_ids.difference(ids_to_remove)
 
+# Pickle info
 to_dump = {}
 to_dump['common_ids'] = common_ids
 to_dump['profile_data'] = profile_data
