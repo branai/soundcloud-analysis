@@ -31,7 +31,7 @@ def show_following_distribution(filename, ids_to_plot):
                 # Calculate Jensen-Hannon Divergence
                 jh = math.sqrt(jensenshannon(normal[0], n))
                 plt.annotate("JH: " + str(jh)[:8], xy=(0.7, 0.9), xycoords='axes fraction', fontsize=14, color='purple')
-                plt.savefig('./images/JH_BadArtist{}.png'.format(str(ids_to_plot[curr])))
+                plt.savefig('./images/JH_GoodArtist{}.png'.format(str(ids_to_plot[curr])))
                 #plt.show()
 
             plt.clf()
@@ -43,6 +43,7 @@ def show_following_distribution(filename, ids_to_plot):
 
 x, normal = show_following_distribution('db_files/followers_good.db', vars.check_good_ids)
 
+show_following_distribution('db_files/followers_good.db', vars.check_good_ids)
 show_following_distribution('db_files/followers_bad.db', vars.check_bad_ids)
 show_following_distribution('db_files/followers_pot.db', vars.check_pot_ids)
 show_following_distribution('db_files/followers_pot.db', vars.check_bad_ids)

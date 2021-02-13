@@ -47,7 +47,26 @@ There is clearly a difference between the FF distribution of mainstream artists 
 
 While it is too early to give a definitive explanation for this, it could possibly be due to the fact that fake accounts that are made to follow accounts are more likely to follow more accounts than the average user.
 
-***TODO:*** *Numerically model the distribution above*
+I used Jensen-Shannon divergence to quantitatively show how the distributions between the FF distribution of mainstream artists and suspicious ones differ. Specifically, I computed the divergence for each suspicious artist against mainstream artist A. The following are the same distributions, but with the Jensen-Shannon divergence shown.
+
+![plot13](./images/JH_BadArtistA.png)
+![plot14](./images/JH_BadArtistB.png)
+![plot15](./images/JH_BadArtistC.png)
+![plot16](./images/JH_BadArtistD.png)
+![plot17](./images/JH_BadArtistE.png)
+![plot18](./images/JH_BadArtistF.png)
+![plot19](./images/JH_BadArtistG.png)
+
+For comparison, the following are the FF distributions for mainstream artists with the Jensen-Shannon divergence shown.
+
+***Note:*** *The Jensen-Shannon divergence for mainstream artist A is zero because as stated earlier, mainstream artist A is used as a baseline.*
+
+![plot20](./images/JH_GoodArtistA.png)
+![plot21](./images/JH_GoodArtistB.png)
+![plot22](./images/JH_GoodArtistC.png)
+![plot23](./images/JH_GoodArtistD.png)
+
+Notice how these mainstream artist divergences are significantly lower than the ones for suspicious artists.
 
 ## Marking Artists with Irregular FF Distributions
 
